@@ -50,19 +50,35 @@ test("Can get name via getName()", () => {
 });
 
 test("Can get id via getId()", () => {
+  
+  // Arrange
   const testValue = 100;
+
+  //Act
   const e = new Employee("Foo", testValue);
+
+  // Assert
   expect(e.getId()).toBe(testValue);
 });
 
 test("Can get email via getEmail()", () => {
+  // Arrange
   const testValue = "test@test.com";
+
+  // Act
   const e = new Employee("Foo", 1, testValue);
+
+  //Assert
   expect(e.getEmail()).toBe(testValue);
 });
 
 test("getRole() should return \"Employee\"", () => {
+  // Arrange
   const testValue = "Employee";
+
+  //Act
   const e = new Employee("Alice", 1, "test@test.com");
+
+  //Assert
   expect(e.getRole()).toBe(testValue);
 });
