@@ -40,10 +40,10 @@ function askUserForManagerInfo() {
             message: "Enter Manager's Office Number!",
             name: "officeNumber"
         }
-    ]).then ((managerData) => {
+    ]).then((managerData) => {
 
-        const newManager = new Manager (managerData.name, managerData.id, managerData.email, managerData.officeNumber);
-        
+        const newManager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
+
         //push newManager to employeeList
         employeeList.push(newManager);
 
@@ -64,19 +64,21 @@ function askUserForEmployeeType() {
             choices: ["Engineer", "Intern", "I don't have any more member to add!"],
             name: "employeeType"
         }
-    ]).then ((newEmployeeChoiceData) => {
+    ]).then((newEmployeeChoiceData) => {
 
         // if the selected a new Engineer
-        if (newEmployeeChoiceData.employeeType === "Engineer"){
+        if (newEmployeeChoiceData.employeeType === "Engineer") {
             askUserForEngineerInfo();
         }
 
         // ELSE if the user selected a new Intern
-        // askUserForInternInfo();
+        else if (newEmployeeChoiceData.employeeType === "Intern") {
+            askUserForInternInfo();
+        }
 
         // ELSE
-        else{
-            console.log("DONE!")
+        else {
+            console.log(employeeList)
         }
         // createHTML();
     })
@@ -108,9 +110,9 @@ function askUserForEngineerInfo() {
             message: "Enter Engineer's GitHub Username!",
             name: "github"
         }
-    ]).then ((engineerData) => {
-        const newEngineer = new Engineer (engineerData.name, engineerData.id, engineerData.email, engineerData.github);
-        
+    ]).then((engineerData) => {
+        const newEngineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+
         //push newManager to employeeList
         employeeList.push(newEngineer);
 
@@ -144,8 +146,13 @@ function askUserForInternInfo() {
             message: "Enter Intern's school!",
             name: "school"
         }
-    ]).then ((internData) => {
+    ]).then((internData) => {
+        const newInter = new Intern(internData.name, internData.id, internData.email, internData.school);
 
+        //push newManager to employeeList
+        employeeList.push(newInter);
+
+        askUserForEmployeeType();
     })
 }
 
