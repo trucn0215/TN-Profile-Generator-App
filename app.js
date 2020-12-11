@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Choices = require("inquirer/lib/objects/choices");
 
 const employeeList = [];
 
@@ -16,6 +17,8 @@ const employeeList = [];
 
 // Ask for manager info
 function askUserForManagerInfo() {
+
+    console.log("ASK FOR MANAGER INFO!")
     return inquirer.prompt([
         {
             type: "input",
@@ -35,54 +38,111 @@ function askUserForManagerInfo() {
         {
             type: "number",
             message: "Enter Manager's Office Number!",
-            name: "managerOfficeNumber"
+            name: "officeNumber"
         }
     ]).then ((managerData) => {
 
-        const newManager = new Manager (managerData.name, managerData.id, managerData.email);
+        const newManager = new Manager (managerData.name, managerData.id, managerData.email, managerData.officeNumber);
         
         //push newManager to employeeList
         employeeList.push(newManager);
 
-        // askUserForEmployeeType();
+        askUserForEmployeeType();
     })
 }
 
 // Ask user for next employee type
 function askUserForEmployeeType() {
+
+    console.log(" ")
+    console.log("EMPLOYEE TYPE!")
+
     return inquirer.prompt([
         {
-
+            type: "list",
+            message: "Which type of team member would you like to add? `(Use arrow key to select)`",
+            choices: ["Engineer", "Intern", "I don't have any more member to add!"],
+            name: "employeeType"
         }
     ]).then ((newEmployeeChoiceData) => {
 
         // if the selected a new Engineer
-        // askUserForEngineerInfo();
+        if (newEmployeeChoiceData.employeeType === "Engineer"){
+            askUserForEngineerInfo();
+        }
 
         // ELSE if the user selected a new Intern
         // askUserForInternInfo();
 
         // ELSE
+        else{
+            console.log("DONE!")
+        }
         // createHTML();
     })
 }
 
 // Ask user for engineer info
 function askUserForEngineerInfo() {
+
+    console.log(" ")
+    console.log("ENGINEER INFO!")
     return inquirer.prompt([
         {
-
+            type: "input",
+            message: "Please provide Engineer's Name!",
+            name: "engineerName"
+        },
+        {
+            type: "number",
+            message: "Enter Engineer's ID!",
+            name: "engineerId"
+        },
+        {
+            type: "input",
+            message: "Enter Engineer's Email!",
+            name: "engineerEmail"
+        },
+        {
+            type: "input",
+            message: "Enter Engineer's GitHub Username!",
+            name: "github"
         }
     ]).then ((engineerData) => {
+        const newEngineer = new Engineer (engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+        
+        //push newManager to employeeList
+        employeeList.push(newEngineer);
 
+        askUserForEmployeeType();
     })
 }
 
 // Ask user for intern info
 function askUserForInternInfo() {
+
+    console.log(" ")
+    console.log("INTERN INFO!")
     return inquirer.prompt([
         {
-
+            type: "input",
+            message: "Please provide Intern's Name!",
+            name: "internName"
+        },
+        {
+            type: "number",
+            message: "Enter Intern's ID!",
+            name: "internId"
+        },
+        {
+            type: "input",
+            message: "Enter Intern's Email!",
+            name: "internEmail"
+        },
+        {
+            type: "input",
+            message: "Enter Intern's school!",
+            name: "school"
         }
     ]).then ((internData) => {
 
