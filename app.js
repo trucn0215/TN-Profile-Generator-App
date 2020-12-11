@@ -10,12 +10,75 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employeeList = [];
+
+// Each ask had it own function
+
+// Ask for manager info
+function askUserForManagerInfo() {
+    return inquirer.prompt([
+        {
+
+        }
+    ]).then ((managerData) => {
+
+        const newManager = new Manager (managerData.name, managerData.id, managerData.email);
+        
+        //push newManager to employeeList
+        employeeList.push(newManager);
+
+        askUserForEmployeeType();
+    })
+}
+
+// Ask user for next employee type
+function askUserForEmployeeType() {
+    return inquirer.prompt([
+        {
+
+        }
+    ]).then ((newEmployeeChoiceData) => {
+
+        // if the selected a new Engineer
+        askUserForEngineerInfo();
+
+        // ELSE if the user selected a new Intern
+        askUserForInternInfo();
+
+        // ELSE
+        createHTML();
+    })
+}
+
+// Ask user for engineer info
+function askUserForEngineerInfo() {
+    return inquirer.prompt([
+        {
+
+        }
+    ]).then ((engineerData) => {
+
+    })
+}
+
+// Ask user for intern info
+function askUserForInternInfo() {
+    return inquirer.prompt([
+        {
+
+        }
+    ]).then ((internData) => {
+
+    })
+}
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 function teamMember() {
     inquirer
         .prompt([
+
             {
                 message: "Enter a Employee's name!",
                 name: "name"
@@ -44,7 +107,10 @@ function teamMember() {
         })
 }
 
-function createHTML(){
+function createHTML() {
+
+    const htmlContent = render(employeeList);
+
     const html = `<!DOCTYPE html>
     <html lang="en">
     
@@ -77,14 +143,16 @@ function createHTML(){
     </body>
     
     </html>`;
-    
-    fs.writeFile("./output/team.html", html, function(err){
-        if(err) {
+
+    fs.writeFile("./output/team.html", html, function (err) {
+        if (err) {
             console.log(err);
         }
     });
     console.log("HTML file created");
 }
+
+askUserForManagerInfo(); // Use this to kick of the app
 
 teamMember();
 // createHTML();
