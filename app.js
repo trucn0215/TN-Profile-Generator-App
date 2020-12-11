@@ -79,8 +79,8 @@ function askUserForEmployeeType() {
         // ELSE
         else {
             console.log(employeeList)
+            createHTML();
         }
-        // createHTML();
     })
 }
 
@@ -156,46 +156,14 @@ function askUserForInternInfo() {
     })
 }
 
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-// function teamMember() {
-//     inquirer
-//         .prompt([
-
-//             {
-//                 message: "Enter a Employee's name!",
-//                 name: "name"
-//             },
-//             {
-//                 message: "Enter Employee's ID!",
-//                 name: "id"
-//             },
-//             {
-//                 message: "Enter Employee's Email!",
-//                 name: "email"
-//             },
-//             {
-//                 type: "list",
-//                 message: "Select employee's role!",
-//                 choices: [
-//                     "Manager",
-//                     "Engineer",
-//                     "Intern"
-//                 ],
-//                 name: "role"
-//             }
-//         ])
-//         .then((response) => {
-//             console.log(response);
-//         })
-// }
-
 function createHTML() {
 
     const htmlContent = render(employeeList);
 
-    const html = `<!DOCTYPE html>
+    const createHtmlFile = [];
+
+    const htmlStart = `
+    <!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -220,19 +188,26 @@ function createHTML() {
         <div class="container">
             <div class="row">
                 <div class="team-area col-12 d-flex justify-content-center">
-                    {{ team }}
+                `
+    createHtmlFile.push(htmlStart);
+
+    // ADD team members here
+
+    const htmlEnd = `
                 </div>
             </div>
         </div>
     </body>
     
     </html>`;
+    createHtmlFile.push(htmlEnd);
 
-    fs.writeFile("./output/team.html", html, function (err) {
-        if (err) {
-            console.log(err);
-        }
-    });
+    // fs.writeFile("./output/team.html", html, function (err) {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    // });
+    console.log(createHtmlFile);
     console.log("HTML file created");
 }
 
