@@ -18,7 +18,24 @@ const employeeList = [];
 function askUserForManagerInfo() {
     return inquirer.prompt([
         {
-
+            type: "input",
+            message: "Please provide Manager's Name!",
+            name: "managerName"
+        },
+        {
+            type: "number",
+            message: "Enter Manager's ID!",
+            name: "managerId"
+        },
+        {
+            type: "input",
+            message: "Enter Manager's Email!",
+            name: "managerEmail"
+        },
+        {
+            type: "number",
+            message: "Enter Manager's Office Number!",
+            name: "managerOfficeNumber"
         }
     ]).then ((managerData) => {
 
@@ -27,7 +44,7 @@ function askUserForManagerInfo() {
         //push newManager to employeeList
         employeeList.push(newManager);
 
-        askUserForEmployeeType();
+        // askUserForEmployeeType();
     })
 }
 
@@ -40,13 +57,13 @@ function askUserForEmployeeType() {
     ]).then ((newEmployeeChoiceData) => {
 
         // if the selected a new Engineer
-        askUserForEngineerInfo();
+        // askUserForEngineerInfo();
 
         // ELSE if the user selected a new Intern
-        askUserForInternInfo();
+        // askUserForInternInfo();
 
         // ELSE
-        createHTML();
+        // createHTML();
     })
 }
 
@@ -75,37 +92,37 @@ function askUserForInternInfo() {
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-function teamMember() {
-    inquirer
-        .prompt([
+// function teamMember() {
+//     inquirer
+//         .prompt([
 
-            {
-                message: "Enter a Employee's name!",
-                name: "name"
-            },
-            {
-                message: "Enter Employee's ID!",
-                name: "id"
-            },
-            {
-                message: "Enter Employee's Email!",
-                name: "email"
-            },
-            {
-                type: "list",
-                message: "Select employee's role!",
-                choices: [
-                    "Manager",
-                    "Engineer",
-                    "Intern"
-                ],
-                name: "role"
-            }
-        ])
-        .then((response) => {
-            console.log(response);
-        })
-}
+//             {
+//                 message: "Enter a Employee's name!",
+//                 name: "name"
+//             },
+//             {
+//                 message: "Enter Employee's ID!",
+//                 name: "id"
+//             },
+//             {
+//                 message: "Enter Employee's Email!",
+//                 name: "email"
+//             },
+//             {
+//                 type: "list",
+//                 message: "Select employee's role!",
+//                 choices: [
+//                     "Manager",
+//                     "Engineer",
+//                     "Intern"
+//                 ],
+//                 name: "role"
+//             }
+//         ])
+//         .then((response) => {
+//             console.log(response);
+//         })
+// }
 
 function createHTML() {
 
@@ -154,7 +171,7 @@ function createHTML() {
 
 askUserForManagerInfo(); // Use this to kick of the app
 
-teamMember();
+// teamMember();
 // createHTML();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
