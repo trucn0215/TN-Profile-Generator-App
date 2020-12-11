@@ -23,17 +23,17 @@ function askUserForManagerInfo() {
         {
             type: "input",
             message: "Please provide Manager's Name!",
-            name: "managerName"
+            name: "name"
         },
         {
             type: "number",
             message: "Enter Manager's ID!",
-            name: "managerId"
+            name: "id"
         },
         {
             type: "input",
             message: "Enter Manager's Email!",
-            name: "managerEmail"
+            name: "email"
         },
         {
             type: "number",
@@ -93,17 +93,17 @@ function askUserForEngineerInfo() {
         {
             type: "input",
             message: "Please provide Engineer's Name!",
-            name: "engineerName"
+            name: "name"
         },
         {
             type: "number",
             message: "Enter Engineer's ID!",
-            name: "engineerId"
+            name: "id"
         },
         {
             type: "input",
             message: "Enter Engineer's Email!",
-            name: "engineerEmail"
+            name: "email"
         },
         {
             type: "input",
@@ -129,17 +129,17 @@ function askUserForInternInfo() {
         {
             type: "input",
             message: "Please provide Intern's Name!",
-            name: "internName"
+            name: "name"
         },
         {
             type: "number",
             message: "Enter Intern's ID!",
-            name: "internId"
+            name: "id"
         },
         {
             type: "input",
             message: "Enter Intern's Email!",
-            name: "internEmail"
+            name: "email"
         },
         {
             type: "input",
