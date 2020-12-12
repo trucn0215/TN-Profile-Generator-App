@@ -59,7 +59,7 @@ function askUserForEmployeeType() {
     return inquirer.prompt([
         {
             type: "list",
-            message: "Which type of team member would you like to add? `(Use arrow key to select)`",
+            message: "Which type of team member would you like to add?",
             choices: ["Engineer", "Intern", "I don't have any more member to add!"],
             name: "employeeType"
         }
