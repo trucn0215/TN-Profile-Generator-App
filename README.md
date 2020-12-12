@@ -17,8 +17,11 @@ The application will prompt the user for information about the team manager and 
     - Bootstrap: To styling the page
     - fontawesome: To import new font styles
 
-## Demo
-[Click here for Demo Video](https://www.youtube.com/channel/UCXro7G-h_OJb48q8pTE_7jQ/featured?view_as=subscriber)
-
 ## Link
 [Click here for Repo Link](https://github.com/trucn0215/TN-Team-Profile-Generator-App)
+
+## Demo
+[Click here for Demo Video](https://youtu.be/XihSMs8ZjW4)
+
+## Screenshoot of generated Team Page
+![webpage screenshoot](img/Team-Profile-Generated.png)
